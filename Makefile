@@ -6,7 +6,7 @@
 #    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 16:43:51 by maparigi          #+#    #+#              #
-#    Updated: 2022/06/12 12:55:48 by maparigi         ###   ########.fr        #
+#    Updated: 2022/06/12 14:56:47 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,12 @@ FLAGS_MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 .c.o:
 	@${CC} ${CFLAGS} -I${INC} -Imlx_linux -O3 -c $< -o $@
 
-all:	mlx ${LIBFT} ${GNL} ${NAME}
+all:	${LIBFT} ${GNL} ${NAME}
 
 ${NAME}: ${OBJS}
+	@echo "${Red}Compiling${NC} : ${Purple}mlx${NC}"
+	@make -C mlx_linux all
+	@echo "${Purple}mlx${NC} : has been successfully compiled."
 	@echo "${Red}Compiling${NC} : ${Purple}${NAME}${NC}"
 	${CC} ${OBJS} ${CFLAGS} ${LIBFT} ${GNL} ${FLAGS_MLX} -o ${NAME}
 	@echo "${Purple}${NAME}${NC} : has been successfully compiled."
@@ -62,11 +65,6 @@ ${LIBFT}:
 
 ${GNL}:
 	@make -C gnl
-
-mlx:
-	@echo "${Red}Compiling${NC} : ${Purple}mlx${NC}"
-	@make -C mlx_linux
-	@echo "${Purple}mlx${NC} : has been successfully compiled."
 
 val:	${NAME}
 	valgrind \

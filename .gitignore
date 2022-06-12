@@ -30,6 +30,7 @@
 *.dylib
 
 # Executables
+so_long
 *.exe
 *.out
 *.app

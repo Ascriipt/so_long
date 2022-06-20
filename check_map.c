@@ -6,31 +6,31 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 12:38:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/12 14:18:19 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/06/20 19:41:19 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long_lib.h>
 
-static void	is_rectangle(t_coord map)
+static void	is_rectangle(t_coord *map)
 {
 	int	i;
 	int	j;
 
-	map.x = ft_strlen(map.map[0]);
-	map.y = 0;
+	map->x = ft_strlen(map->map[0]);
+	map->y = 0;
 	i = -1;
-	while (map.map[++i])
+	while (map->map[++i])
 	{
-		map.y++;
-		j = ft_strlen(map.map[i]);
-		if (!map.map[i + 1])
-			map.x -= 1;
-		if (j != map.x)
-			pexit_failfree("not a rectangle\n", map.map);
+		map->y++;
+		j = ft_strlen(map->map[i]);
+		if (!map->map[i + 1])
+			map->x -= 1;
+		if (j != map->x)
+			pexit_failfree("not a rectangle\n", map->map);
 	}
-	if (map.y == map.x)
-		pexit_failfree("not a rectangle\n", map.map);
+	if (map->y == map->x)
+		pexit_failfree("not a rectangle\n", map->map);
 }
 
 static void	pec(char **map)
@@ -82,8 +82,30 @@ static void	pec_digit(char **map)
 	pec(map);
 }
 
+static void	walls(t_coord *map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = -1;
+	if (!map->map)
+		return ;
+	while (map->map[++i])
+		if (map->map[i][0] != '1' || map->map[i][map->x - 1] != '1')
+			pexit_failfree("walls not properly mapped.\n", map->map);
+	while (map->map[0][++j] && j < map->x)
+		if (map->map[0][j] != '1')
+			pexit_failfree("walls not properly mapped.\n", map->map);
+	j = -1;
+	while (map->map[map->y - 1][++j] && j < map->x)
+		if (map->map[map->y - 1][j] != '1')
+			pexit_failfree("walls not properly mapped.\n", map->map);
+}
+
 void	map_main(t_coord map)
 {
 	pec_digit(map.map);
-	is_rectangle(map);
+	is_rectangle(&map);
+	walls(&map);
 }

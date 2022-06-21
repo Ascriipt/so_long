@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/21 10:33:06 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/06/21 10:43:17 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	my_init(t_window *win, t_data *img, t_coord map)
 {
 	win->mlx = mlx_init();
-	win->window = mlx_new_window(win->mlx, (map.x * 64), (map.y * 64), "Hello world!");
+	win->window = mlx_new_window(win->mlx, (map.x * 64),
+			(map.y * 64), "Hello world!");
 	img->img = mlx_new_image(win->mlx, (map.x * 64), (map.y * 64));
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
 			&img->endian);
@@ -46,8 +47,8 @@ void	printtab(char **tab)
 int	main(int ac, char **av)
 {
 	t_coord		map;
-//	t_window	win;
-//	t_data		img;
+	t_window	win;
+	t_data		img;
 
 	if (ac < 2)
 		return (1);
@@ -55,6 +56,6 @@ int	main(int ac, char **av)
 	map_main(&map);
 	printtab(map.map);
 	free_tab(map.map);
-	//my_init(&win, &img, map);
+	my_init(&win, &img, map);
 	return (0);
 }

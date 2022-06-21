@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 12:38:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/21 10:25:23 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/06/21 10:38:22 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ static void	pec_digit(char **map)
 				break ;
 			if (map[i][j] != '1' && map[i][j] != '0' &&
 				map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != 'C')
-				pexit_failfree("digits should be either 1 or 0.\n", map);
+				pexit_failfree("the map should only contain 1, 0, P, E, C.\n",
+					map);
 		}
 	}
 	pec(map);

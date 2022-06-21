@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/21 10:43:17 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/06/21 12:30:01 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	my_init(t_window *win, t_data *img, t_coord map)
 {
+	if (!img)
+		return ;
 	win->mlx = mlx_init();
 	win->window = mlx_new_window(win->mlx, (map.x * 64),
 			(map.y * 64), "Hello world!");
-	img->img = mlx_new_image(win->mlx, (map.x * 64), (map.y * 64));
-	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
-			&img->endian);
+	gen_map(map, win);
 	mlx_loop(win->mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/12 13:19:33 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/06/21 10:25:54 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**parse_map(char *av);
 
 /*------------check------------*/
 
-void	map_main(t_coord map);
+void	map_main(t_coord *map);
 
 /*-------------exit-------------*/
 

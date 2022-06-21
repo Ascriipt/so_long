@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 12:38:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/20 19:41:19 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/06/21 10:25:23 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ static void	walls(t_coord *map)
 			pexit_failfree("walls not properly mapped.\n", map->map);
 }
 
-void	map_main(t_coord map)
+void	map_main(t_coord *map)
 {
-	pec_digit(map.map);
-	is_rectangle(&map);
-	walls(&map);
+	pec_digit(map->map);
+	is_rectangle(map);
+	walls(map);
 }

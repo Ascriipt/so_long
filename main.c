@@ -17,6 +17,8 @@ void	my_init(t_window *win, t_data *img, t_coord map)
 	if (!img)
 		return ;
 	win->mlx = mlx_init();
+	if (!win->mlx)
+		pexit_failfree("nan", map.map);
 	win->window = mlx_new_window(win->mlx, ((map.x - 1) * 64),
 			((map.y - 1) * 64), "so_long");
 	gen_map(map, win);

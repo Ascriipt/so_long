@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/21 13:02:53 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:03:34 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct s_textures
+{
+	void	*walls;
+	void	*player;
+	void	*floor;
+	void	*ennemy;
+	void	*collectibles;
+}				t_texture;
 
 typedef struct s_window
 {

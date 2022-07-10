@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/23 19:55:14 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/10 15:31:54 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	my_init(t_window *win, t_data *img, t_coord map)
 {
+	t_texture	game_t;
+
 	if (!img)
 		return ;
 	win->mlx = mlx_init();
@@ -21,7 +23,8 @@ void	my_init(t_window *win, t_data *img, t_coord map)
 		pexit_failfree("mlx pointer init error\n", map.map);
 	win->window = mlx_new_window(win->mlx, ((map.x - 1) * 64),
 			((map.y - 1) * 64), "so_long");
-	gen_map(map, win);
+	init_texture(&game_t, win);
+	gen_map(map, win, game_t);
 	mlx_loop(win->mlx);
 }
 

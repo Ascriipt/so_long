@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:45:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/10 16:02:59 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/10 16:08:47 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_texture(t_texture *game_t, t_window *win)
 	game_t->player_l = mlx_xpm_file_to_image(win->mlx,
 			"so_long_sprites/Sprite_1.xpm", &hw[0], &hw[1]);
 	game_t->walls = mlx_xpm_file_to_image(win->mlx,
-			"so_long_sprites/rsz_magueule.xpm", &hw[0], &hw[1]);
+			"so_long_sprites/Wall.xpm", &hw[0], &hw[1]);
 	game_t->floor = mlx_xpm_file_to_image(win->mlx,
 			"so_long_sprites/floor.xpm", &hw[0], &hw[1]);
 }

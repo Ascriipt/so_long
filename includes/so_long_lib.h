@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/10 15:31:28 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/10 15:50:11 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct s_data
 typedef struct s_textures
 {
 	void	*walls;
-	void	*player;
+	void	*player_r;
+	void	*player_l;
 	void	*floor;
 	void	*ennemy;
 	void	*collectibles;

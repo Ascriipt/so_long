@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:45:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/11 14:45:37 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:54:21 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,31 @@ void	init_texture(t_texture *game_t, t_window *win)
 			"so_long_sprites/floor.xpm", &hw[0], &hw[1]);
 }
 
-void	match_to_map(char c, int xy[2], t_window *win, t_texture game_t)
+void	close_game(t_window *win, t_texture *game_t, t_coord *map)
+{
+	if (win->mlx)
+		free(win->mlx);
+	if (win->window)
+		free(win->window);
+	if (map->map)
+		free(map->map);
+	if (game_t->collectibles)
+		free(game_t->collectibles);
+	if (game_t->player_l)
+		free(game_t->player_l);
+	if (game_t->player_r)
+		free(game_t->player_r);
+	if (game_t->ennemy_l)
+		free(game_t->ennemy_l);
+	if (game_t->ennemy_r)
+		free(game_t->ennemy_r);
+	if (game_t->walls)
+		free(game_t->walls);
+	if (game_t->floor)
+		free(game_t->floor);
+}
+
+static void	match_to_map(char c, int xy[2], t_window *win, t_texture game_t)
 {
 	if (c == '1')
 		mlx_put_image_to_window(win->mlx, win->window,

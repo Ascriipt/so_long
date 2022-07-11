@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/11 14:25:52 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:05:33 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ typedef struct s_coord
 	int				x;
 	int				y;
 }				t_coord;
+
+typedef struct s_gdata
+{
+	t_data		img;
+	t_coord		map;
+	t_window	win;
+	t_texture	game_t;
+}				t_gdata;
 
 void	my_pixel_put(t_data *data, int x, int y, int color);
 void	init_texture(t_texture *game_t, t_window *win);

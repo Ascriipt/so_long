@@ -1,7 +1,7 @@
 /* XPM */
-static char *d937052f95f0492fd3b4449a7794f5b9If5ClxT2u2LsAhnE[] = {
+static char *result[] = {
 /* columns rows colors chars-per-pixel */
-"64 66 3 1 ",
+"64 64 3 1 ",
 "  c black",
 ". c #006515",
 "X c #BB4200",
@@ -23,7 +23,6 @@ static char *d937052f95f0492fd3b4449a7794f5b9If5ClxT2u2LsAhnE[] = {
 "  XXXX..  ..XXXX  XXXX  XXXXXXXXXXXX  XXXXXXXXXXXX  XXXXXXXXXX  ",
 "  XXXX..  ..XXXX  XXXX  XXXXXXXXXXXX  XXXXXXXXXXXX  XXXXXXXXXX  ",
 "      ....                                                      ",
-"      ....                                                      ",
 "  XX..  XXXXXXXX  XX  XXXX  XXXXXX  XXXXXXXXXXXX  XXXXXXXXXXXX  ",
 "  XX..  XXXXXXXX  XX  XXXX  XXXXXX  XXXXXXXXXXXX  XXXXXXXXXXXX  ",
 "  XXXX  XXXXXXXXXX    XX  XX  XXXX  XXXXXXXXXXXX  XXXXXXXXXXXX  ",
@@ -54,7 +53,6 @@ static char *d937052f95f0492fd3b4449a7794f5b9If5ClxT2u2LsAhnE[] = {
 "  XXXXXX  XXXXXXXXXX    XXXXXXXXXXXX  XXXXXXXXXXXX  XXXXXX  XX  ",
 "  XXXXXX  XXXXXXXXXXXX    XXXXXXXXXX  XXXXXXXXXXXX  XXXX  XXXX  ",
 "  XXXXXX  XXXXXXXXXXXX    XXXXXXXXXX  XXXXXXXXXXXX  XXXX  XXXX  ",
-"                                                                ",
 "                                                                ",
 "  XXXX  XXXXXXXXXX    XX  XXXXXXXX  XXXXXXXXXXXX  XX  XXXXXXXX  ",
 "  XXXX  XXXXXXXXXX    XX  XXXXXXXX  XXXXXXXXXXXX  XX  XXXXXXXX  ",

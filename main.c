@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/12 17:02:23 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:11:42 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	my_init(t_gdata *sl)
 			((sl->map.y) * 64), "so_long");
 	init_texture(&(sl->game_t), &(sl->win));
 	gen_map(sl->map, &(sl->win), sl->game_t);
+	mlx_hook(sl->win.window, 17, 1L << 2, event_manager, &sl);
 	mlx_key_hook(sl->win.window, event_manager, sl);
 	mlx_loop(sl->win.mlx);
 }

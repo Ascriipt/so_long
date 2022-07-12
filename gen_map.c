@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:45:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/12 17:04:47 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:20:48 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_texture(t_texture *game_t, t_window *win)
 void	close_game(t_gdata *sl)
 {
 	if (sl->map.map)
-		free(sl->map.map);
+		free_tab(sl->map.map);
 	if (sl->game_t.collectibles)
 		mlx_destroy_image(sl->win.mlx, sl->game_t.collectibles);
 	if (sl->game_t.player_l)
@@ -57,6 +57,7 @@ void	close_game(t_gdata *sl)
 		mlx_loop_end(sl->win.mlx);
 		free(sl->win.mlx);
 	}
+	exit(EXIT_SUCCESS);
 }
 
 static void	match_to_map(char c, int xy[2], t_window *win, t_texture game_t)

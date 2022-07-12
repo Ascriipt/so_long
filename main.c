@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/12 16:48:25 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:02:23 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	event_manager(int keycode, t_gdata *sl)
 {
-	if (keycode == 17)
+	printf("keycode : %d\n", keycode);
+	if (keycode == 65307)
 		close_game(sl);
 	return (0);
 }
@@ -28,7 +29,7 @@ void	my_init(t_gdata *sl)
 			((sl->map.y) * 64), "so_long");
 	init_texture(&(sl->game_t), &(sl->win));
 	gen_map(sl->map, &(sl->win), sl->game_t);
-	mlx_hook(sl->win.mlx, 17, 0, event_manager, sl);
+	mlx_key_hook(sl->win.window, event_manager, sl);
 	mlx_loop(sl->win.mlx);
 }
 

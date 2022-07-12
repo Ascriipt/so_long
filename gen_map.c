@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:45:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/11 16:54:21 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:46:08 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,31 @@ void	init_texture(t_texture *game_t, t_window *win)
 			"so_long_sprites/floor.xpm", &hw[0], &hw[1]);
 }
 
-void	close_game(t_window *win, t_texture *game_t, t_coord *map)
+void	close_game(t_gdata *sl)
 {
-	if (win->mlx)
-		free(win->mlx);
-	if (win->window)
-		free(win->window);
-	if (map->map)
-		free(map->map);
-	if (game_t->collectibles)
-		free(game_t->collectibles);
-	if (game_t->player_l)
-		free(game_t->player_l);
-	if (game_t->player_r)
-		free(game_t->player_r);
-	if (game_t->ennemy_l)
-		free(game_t->ennemy_l);
-	if (game_t->ennemy_r)
-		free(game_t->ennemy_r);
-	if (game_t->walls)
-		free(game_t->walls);
-	if (game_t->floor)
-		free(game_t->floor);
+	if (sl->map.map)
+		free(sl->map.map);
+	if (sl->game_t.collectibles)
+		mlx_destroy_image(sl->win.mlx, sl->game_t.collectibles);
+	if (sl->game_t.player_l)
+		mlx_destroy_image(sl->win.mlx, sl->game_t.player_l);
+	if (sl->game_t.player_r)
+		mlx_destroy_image(sl->win.mlx, sl->game_t.player_r);
+	if (sl->game_t.ennemy_l)
+		mlx_destroy_image(sl->win.mlx, sl->game_t.ennemy_l);
+	if (sl->game_t.ennemy_r)
+		mlx_destroy_image(sl->win.mlx, sl->game_t.ennemy_r);
+	if (sl->game_t.walls)
+		mlx_destroy_image(sl->win.mlx, sl->game_t.walls);
+	if (sl->game_t.floor)
+		mlx_destroy_image(sl->win.mlx, sl->game_t.floor);
+	if (sl->win.mlx)
+	{
+		mlx_destroy_window(sl->win.mlx, sl->win.window);
+		mlx_destroy_display(sl->win.mlx);
+		mlx_loop_end(sl->win.mlx);
+		free(sl->win.mlx);
+	}
 }
 
 static void	match_to_map(char c, int xy[2], t_window *win, t_texture game_t)

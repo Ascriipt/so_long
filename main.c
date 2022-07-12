@@ -6,26 +6,30 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/10 16:04:26 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:48:25 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_lib.h"
 
-void	my_init(t_window *win, t_data *img, t_coord map)
+int	event_manager(int keycode, t_gdata *sl)
 {
-	t_texture	game_t;
+	if (keycode == 17)
+		close_game(sl);
+	return (0);
+}
 
-	if (!img)
-		return ;
-	win->mlx = mlx_init();
-	if (!win->mlx)
-		pexit_failfree("mlx pointer init error\n", map.map);
-	win->window = mlx_new_window(win->mlx, ((map.x) * 64),
-			((map.y) * 64), "so_long");
-	init_texture(&game_t, win);
-	gen_map(map, win, game_t);
-	mlx_loop(win->mlx);
+void	my_init(t_gdata *sl)
+{
+	sl->win.mlx = mlx_init();
+	if (!sl->win.mlx)
+		pexit_failfree("mlx pointer init error\n", sl->map.map);
+	sl->win.window = mlx_new_window(sl->win.mlx, ((sl->map.x) * 64),
+			((sl->map.y) * 64), "so_long");
+	init_texture(&(sl->game_t), &(sl->win));
+	gen_map(sl->map, &(sl->win), sl->game_t);
+	mlx_hook(sl->win.mlx, 17, 0, event_manager, sl);
+	mlx_loop(sl->win.mlx);
 }
 
 void	free_tab(char **tab)
@@ -51,15 +55,13 @@ void	printtab(char **tab)
 
 int	main(int ac, char **av)
 {
-	t_coord		map;
-	t_window	win;
-	t_data		img;
+	t_gdata	so_long;
 
-	if (ac < 2)
+	if (ac != 2)
 		return (1);
-	map.map = parse_map(av[1]);
-	map_main(&map);
-	printtab(map.map);
-	my_init(&win, &img, map);
+	so_long.map.map = parse_map(av[1]);
+	map_main(&(so_long.map));
+	printtab(so_long.map.map);
+	my_init(&so_long);
 	return (0);
 }

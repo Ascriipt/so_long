@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/11 17:05:33 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:44:51 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ void	gen_map(t_coord map, t_window *win, t_texture game_t);
 
 /*-------------exit-------------*/
 
+
 void	free_tab(char **tab);
+void	close_game(t_gdata *sl);
 void	pexit_failure(char *str);
 void	pexit_failfree(char *str, char **map);
 

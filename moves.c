@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:30:14 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 13:04:17 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:25:09 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,14 @@ void	move_up(int *px, int *py, char **map, t_gdata *sl)
 {
 	if (map[*py - 1][*px] == '1'
 		|| map[*py - 1][*px] == 'E')
+	{
+		if (map[*py - 1][*px] == 'E' && sl->map.t_col
+			== sl->map.c_col)
+			close_game(sl);
 		return ;
+	}
+	if (map[*py - 1][*px] == 'C')
+		sl->map.c_col++;
 	mp_swop(&(map[*py - 1][*px]), &(map[*py][*px]));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));
@@ -49,7 +56,16 @@ void	move_down(int *px, int *py, char **map, t_gdata *sl)
 {
 	if (map[*py + 1][*px] == '1'
 		|| map[*py + 1][*px] == 'E')
+	{
+		if (map[*py + 1][*px] == 'E' && sl->map.t_col
+			== sl->map.c_col)
+			close_game(sl);
 		return ;
+	}
+	if (map[*py + 1][*px] == 'C')
+	{
+		sl->map.c_col++;
+	}
 	mp_swop(&(map[*py + 1][*px]), &(map[*py][*px]));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));
@@ -62,7 +78,14 @@ void	move_left(int *px, int *py, char **map, t_gdata *sl)
 {
 	if (map[*py][*px - 1] == '1'
 		|| map[*py][*px - 1] == 'E')
+	{
+		if (map[*py][*px - 1] == 'E' && sl->map.t_col
+			== sl->map.c_col)
+			close_game(sl);
 		return ;
+	}
+	if (map[*py][*px - 1] == 'C')
+		sl->map.c_col++;
 	mp_swop(&(map[*py][*px - 1]), &(map[*py][*px]));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));
@@ -75,7 +98,14 @@ void	move_right(int *px, int *py, char **map, t_gdata *sl)
 {
 	if (map[*py][*px + 1] == '1'
 		|| map[*py][*px + 1] == 'E')
+	{
+		if (map[*py][*px + 1] == 'E' && sl->map.t_col
+			== sl->map.c_col)
+			close_game(sl);
 		return ;
+	}
+	if (map[*py][*px + 1] == 'C')
+		sl->map.c_col++;
 	mp_swop(&(map[*py][*px + 1]), &(map[*py][*px]));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));

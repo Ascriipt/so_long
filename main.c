@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 13:08:41 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:26:44 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 int	event_manager(int keycode, t_gdata *sl)
 {
-	sl->mv++;
-	ft_putstr_fd("Moves : ", STDERR_FILENO);
-	ft_putnbr_fd(sl->mv, STDOUT_FILENO);
-	ft_putchar_fd('\n', STDOUT_FILENO);
+	if (keycode == 119 || keycode == 115
+		|| keycode == 100 || keycode == 97)
+	{
+		sl->mv++;
+		ft_putstr_fd("Moves : ", STDERR_FILENO);
+		ft_putnbr_fd(sl->mv, STDOUT_FILENO);
+		ft_putchar_fd('\n', STDOUT_FILENO);
+	}
 	if (keycode == 65307)
 		close_game(sl);
 	if (keycode == 119)
@@ -75,6 +79,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (1);
 	so_long.mv = 0;
+	so_long.map.c_col = 0;
 	so_long.map.map = parse_map(av[1]);
 	map_main(&(so_long.map));
 	my_init(&so_long);

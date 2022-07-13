@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 13:07:07 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:08:41 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	event_manager(int keycode, t_gdata *sl)
 	if (keycode == 65307)
 		close_game(sl);
 	if (keycode == 119)
-	{
 		move_up(&(sl->map.px), &(sl->map.py),
 			sl->map.map, sl);
-	}
 	else if (keycode == 115)
 		move_down(&(sl->map.px), &(sl->map.py),
 			sl->map.map, sl);

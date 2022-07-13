@@ -22,14 +22,12 @@ void	free_texturexmap(t_texture *game_t, t_window *win, t_coord *map)
 		mlx_destroy_image(win->mlx, game_t->player_l);
 	if (game_t->player_r)
 		mlx_destroy_image(win->mlx, game_t->player_r);
-	if (game_t->ennemy_l)
-		mlx_destroy_image(win->mlx, game_t->ennemy_l);
-	if (game_t->ennemy_r)
-		mlx_destroy_image(win->mlx, game_t->ennemy_r);
 	if (game_t->walls)
 		mlx_destroy_image(win->mlx, game_t->walls);
 	if (game_t->floor)
 		mlx_destroy_image(win->mlx, game_t->floor);
+	if (game_t->exit)
+		mlx_destroy_image(win->mlx, game_t->exit);
 }
 
 void	init_texture(t_gdata *sl)
@@ -38,10 +36,6 @@ void	init_texture(t_gdata *sl)
 
 	sl->game_t.collectibles = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/dolla.xpm", &hw[0], &hw[1]);
-	sl->game_t.ennemy_l = mlx_xpm_file_to_image(sl->win.mlx,
-			"so_long_sprites/ennemy_l.xpm", &hw[0], &hw[1]);
-	sl->game_t.ennemy_r = mlx_xpm_file_to_image(sl->win.mlx,
-			"so_long_sprites/ennemy_r.xpm", &hw[0], &hw[1]);
 	sl->game_t.player_r = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/Sprite_1.1.xpm", &hw[0], &hw[1]);
 	sl->game_t.player_l = mlx_xpm_file_to_image(sl->win.mlx,
@@ -50,9 +44,10 @@ void	init_texture(t_gdata *sl)
 			"so_long_sprites/Wall.xpm", &hw[0], &hw[1]);
 	sl->game_t.floor = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/floor.xpm", &hw[0], &hw[1]);
+	sl->game_t.exit = mlx_xpm_file_to_image(sl->win.mlx,
+			"so_long_sprites/exit.xpm", &hw[0], &hw[1]);
 	if (!sl->game_t.collectibles || !sl->game_t.floor || !sl->game_t.walls
-		|| !sl->game_t.ennemy_l || !sl->game_t.ennemy_r
-		|| !sl->game_t.player_l || !sl->game_t.player_r)
+		|| !sl->game_t.player_l || !sl->game_t.player_r || !sl->game_t.exit)
 		close_game(sl);
 }
 
@@ -79,7 +74,7 @@ static void	match_to_map(char c, int xy[2], t_window *win, t_texture game_t)
 			game_t.player_r, xy[0], xy[1]);
 	else if (c == 'E')
 		mlx_put_image_to_window(win->mlx, win->window,
-			game_t.ennemy_r, xy[0], xy[1]);
+			game_t.exit, xy[0], xy[1]);
 	else if (c == 'C')
 		mlx_put_image_to_window(win->mlx, win->window,
 			game_t.collectibles, xy[0], xy[1]);

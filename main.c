@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 03:55:46 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 12:28:48 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,6 @@ void	free_tab(char **tab)
 		free(tab);
 }
 
-void	printtab(char **tab)
-{
-	int	i;
-
-	i = -1;
-	while (tab[++i])
-		printf("%s", tab[i]);
-	return ;
-}
-
 int	main(int ac, char **av)
 {
 	t_gdata	so_long;
@@ -87,7 +77,6 @@ int	main(int ac, char **av)
 		return (1);
 	so_long.map.map = parse_map(av[1]);
 	map_main(&(so_long.map));
-	printtab(so_long.map.map);
 	my_init(&so_long);
 	return (0);
 }

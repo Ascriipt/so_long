@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:17:03 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 01:09:59 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:16:40 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,21 @@ int	my_open(char *filename)
 {
 	int	fd;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	errno = 0;
+	fd = open(filename, __O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
+		pexit_failure("map is a directory.");
+	}
+	errno = 0;
+	fd = open(filename, O_RDONLY | __O_NOFOLLOW);
+	if (fd < 0 || errno != 0)
+	{
+		if (errno == 40)
+			pexit_failure("map is a symlink");
 		pexit_failure("failed to open file.");
+	}
 	return (fd);
 }
 

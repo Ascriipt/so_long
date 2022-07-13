@@ -6,57 +6,64 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:45:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/12 17:20:48 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 01:34:45 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_lib.h"
 
-void	init_texture(t_texture *game_t, t_window *win)
+void	free_texturexmap(t_texture *game_t, t_window *win, t_coord *map)
+{
+	if (map->map)
+		free_tab(map->map);
+	if (game_t->collectibles)
+		mlx_destroy_image(win->mlx, game_t->collectibles);
+	if (game_t->player_l)
+		mlx_destroy_image(win->mlx, game_t->player_l);
+	if (game_t->player_r)
+		mlx_destroy_image(win->mlx, game_t->player_r);
+	if (game_t->ennemy_l)
+		mlx_destroy_image(win->mlx, game_t->ennemy_l);
+	if (game_t->ennemy_r)
+		mlx_destroy_image(win->mlx, game_t->ennemy_r);
+	if (game_t->walls)
+		mlx_destroy_image(win->mlx, game_t->walls);
+	if (game_t->floor)
+		mlx_destroy_image(win->mlx, game_t->floor);
+}
+
+void	init_texture(t_gdata *sl)
 {
 	int		hw[2];
 
-	game_t->collectibles = mlx_xpm_file_to_image(win->mlx,
+	sl->game_t.collectibles = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/dolla.xpm", &hw[0], &hw[1]);
-	game_t->ennemy_l = mlx_xpm_file_to_image(win->mlx,
+	sl->game_t.ennemy_l = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/ennemy_l.xpm", &hw[0], &hw[1]);
-	game_t->ennemy_r = mlx_xpm_file_to_image(win->mlx,
+	sl->game_t.ennemy_r = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/ennemy_r.xpm", &hw[0], &hw[1]);
-	game_t->player_r = mlx_xpm_file_to_image(win->mlx,
+	sl->game_t.player_r = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/Sprite_1.1.xpm", &hw[0], &hw[1]);
-	game_t->player_l = mlx_xpm_file_to_image(win->mlx,
+	sl->game_t.player_l = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/Sprite_1.xpm", &hw[0], &hw[1]);
-	game_t->walls = mlx_xpm_file_to_image(win->mlx,
+	sl->game_t.walls = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/Wall.xpm", &hw[0], &hw[1]);
-	game_t->floor = mlx_xpm_file_to_image(win->mlx,
+	sl->game_t.floor = mlx_xpm_file_to_image(sl->win.mlx,
 			"so_long_sprites/floor.xpm", &hw[0], &hw[1]);
+	if (!sl->game_t.collectibles || !sl->game_t.floor || !sl->game_t.walls
+		|| !sl->game_t.ennemy_l || !sl->game_t.ennemy_r
+		|| !sl->game_t.player_l || !sl->game_t.player_r)
+		close_game(sl);
 }
 
 void	close_game(t_gdata *sl)
 {
-	if (sl->map.map)
-		free_tab(sl->map.map);
-	if (sl->game_t.collectibles)
-		mlx_destroy_image(sl->win.mlx, sl->game_t.collectibles);
-	if (sl->game_t.player_l)
-		mlx_destroy_image(sl->win.mlx, sl->game_t.player_l);
-	if (sl->game_t.player_r)
-		mlx_destroy_image(sl->win.mlx, sl->game_t.player_r);
-	if (sl->game_t.ennemy_l)
-		mlx_destroy_image(sl->win.mlx, sl->game_t.ennemy_l);
-	if (sl->game_t.ennemy_r)
-		mlx_destroy_image(sl->win.mlx, sl->game_t.ennemy_r);
-	if (sl->game_t.walls)
-		mlx_destroy_image(sl->win.mlx, sl->game_t.walls);
-	if (sl->game_t.floor)
-		mlx_destroy_image(sl->win.mlx, sl->game_t.floor);
-	if (sl->win.mlx)
-	{
-		mlx_destroy_window(sl->win.mlx, sl->win.window);
-		mlx_destroy_display(sl->win.mlx);
-		mlx_loop_end(sl->win.mlx);
-		free(sl->win.mlx);
-	}
+	printf("\n%p\n", sl);
+	free_texturexmap(&(sl->game_t), &(sl->win), &(sl->map));
+	mlx_destroy_window(sl->win.mlx, sl->win.window);
+	mlx_destroy_display(sl->win.mlx);
+	mlx_loop_end(sl->win.mlx);
+	free(sl->win.mlx);
 	exit(EXIT_SUCCESS);
 }
 

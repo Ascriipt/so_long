@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/12 17:11:42 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 02:14:50 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int	event_manager(int keycode, t_gdata *sl)
 	return (0);
 }
 
+int	red_cross(void *sl)
+{
+	close_game(sl);
+	return (0);
+}
+
 void	my_init(t_gdata *sl)
 {
 	sl->win.mlx = mlx_init();
@@ -27,9 +33,9 @@ void	my_init(t_gdata *sl)
 		pexit_failfree("mlx pointer init error\n", sl->map.map);
 	sl->win.window = mlx_new_window(sl->win.mlx, ((sl->map.x) * 64),
 			((sl->map.y) * 64), "so_long");
-	init_texture(&(sl->game_t), &(sl->win));
+	init_texture(sl);
 	gen_map(sl->map, &(sl->win), sl->game_t);
-	mlx_hook(sl->win.window, 17, 1L << 2, event_manager, &sl);
+	mlx_hook(sl->win.window, 17, 0L << 2, red_cross, sl);
 	mlx_key_hook(sl->win.window, event_manager, sl);
 	mlx_loop(sl->win.mlx);
 }

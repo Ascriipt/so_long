@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 18:17:03 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/12 12:41:14 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 01:09:59 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,8 @@ char	**parse_map(char *av)
 	if (ml > 0)
 	{
 		map[i] = get_next_line(fd);
-		while (map[i])
+		while (map[i] && i < ml)
 			map[++i] = get_next_line(fd);
-		map[++i] = '\0';
 	}
 	close(fd);
 	return (map);

@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 03:37:54 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 03:44:06 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_coord
 	int				y;
 	int				px;
 	int				py;
+	int				t_col;
+	int				c_col;
 }				t_coord;
 
 typedef struct s_gdata
@@ -102,5 +104,6 @@ void	move_right(int *px, int *py, char **map, t_gdata *sl);
 /*------------utils------------*/
 
 void	mp_swop(char *x, char *y);
+void	count_collectibles(int *t_col, char **map);
 
 #endif

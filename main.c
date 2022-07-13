@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 03:37:51 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 03:55:46 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	my_init(t_gdata *sl)
 	init_texture(sl);
 	gen_map(sl->map, &(sl->win), sl->game_t);
 	find_player(&(sl->map.px), &(sl->map.py), sl->map.map);
-	printf("px = %d, py = %d\n", sl->map.px, sl->map.py);
+	count_collectibles(&(sl->map.t_col), sl->map.map);
+	printf("\nnumber of collectibles : %d\n", sl->map.t_col);
 	mlx_hook(sl->win.window, 17, 0L << 2, red_cross, sl);
 	mlx_key_hook(sl->win.window, event_manager, sl);
 	mlx_loop(sl->win.mlx);

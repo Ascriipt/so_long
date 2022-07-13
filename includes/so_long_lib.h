@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 02:38:36 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 03:37:54 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,16 @@ void	free_tab(char **tab);
 void	close_game(t_gdata *sl);
 void	pexit_failure(char *str);
 void	pexit_failfree(char *str, char **map);
+
+/*------------moves------------*/
+
+void	move_up(int *px, int *py, char **map, t_gdata *sl);
+void	move_down(int *px, int *py, char **map, t_gdata *sl);
+void	move_left(int *px, int *py, char **map, t_gdata *sl);
+void	move_right(int *px, int *py, char **map, t_gdata *sl);
+
+/*------------utils------------*/
+
+void	mp_swop(char *x, char *y);
 
 #endif

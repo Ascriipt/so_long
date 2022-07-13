@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 02:47:01 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 03:37:51 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,23 @@
 int	event_manager(int keycode, t_gdata *sl)
 {
 	printf("keycode : %d\n", keycode);
+	printf("Before:\n x: %d\n, y: %d\n", sl->map.px, sl->map.py);
 	if (keycode == 65307)
 		close_game(sl);
+	if (keycode == 119)
+	{
+		move_up(&(sl->map.px), &(sl->map.py),
+			sl->map.map, sl);
+	}
+	else if (keycode == 115)
+		move_down(&(sl->map.px), &(sl->map.py),
+			sl->map.map, sl);
+	else if (keycode == 100)
+		move_right(&(sl->map.px), &(sl->map.py),
+			sl->map.map, sl);
+	else if (keycode == 97)
+		move_left(&(sl->map.px), &(sl->map.py),
+			sl->map.map, sl);
 	return (0);
 }
 

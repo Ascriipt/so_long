@@ -7,7 +7,6 @@
 *.obj
 *.elf
 *.txt
-*.ber
 
 # Linker output
 *.ilk

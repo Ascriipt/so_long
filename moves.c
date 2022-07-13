@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:30:14 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 13:25:09 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:28:43 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	move_up(int *px, int *py, char **map, t_gdata *sl)
 		return ;
 	}
 	if (map[*py - 1][*px] == 'C')
+	{
+		map[*py - 1][*px] = '0';
 		sl->map.c_col++;
+	}
 	mp_swop(&(map[*py - 1][*px]), &(map[*py][*px]));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));
@@ -64,6 +67,7 @@ void	move_down(int *px, int *py, char **map, t_gdata *sl)
 	}
 	if (map[*py + 1][*px] == 'C')
 	{
+		map[*py + 1][*px] = '0';
 		sl->map.c_col++;
 	}
 	mp_swop(&(map[*py + 1][*px]), &(map[*py][*px]));
@@ -85,7 +89,10 @@ void	move_left(int *px, int *py, char **map, t_gdata *sl)
 		return ;
 	}
 	if (map[*py][*px - 1] == 'C')
+	{
+		map[*py][*px - 1] = '0';
 		sl->map.c_col++;
+	}
 	mp_swop(&(map[*py][*px - 1]), &(map[*py][*px]));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));
@@ -105,7 +112,10 @@ void	move_right(int *px, int *py, char **map, t_gdata *sl)
 		return ;
 	}
 	if (map[*py][*px + 1] == 'C')
+	{
+		map[*py][*px + 1] = '0';
 		sl->map.c_col++;
+	}
 	mp_swop(&(map[*py][*px + 1]), &(map[*py][*px]));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));

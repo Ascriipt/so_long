@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 02:14:57 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 02:32:53 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ typedef struct s_coord
 	char			**map;
 	int				x;
 	int				y;
+	int				px;
+	int				py;
 }				t_coord;
 
 typedef struct s_gdata

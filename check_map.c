@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 12:38:45 by maparigi          #+#    #+#             */
-/*   Updated: 2022/06/23 19:41:26 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 02:28:59 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	pec(char **map)
 		}
 	}
 	if (pec[0] != 1 || pec[1] < 1 || pec[2] < 1)
-		pexit_failfree("Too few/many Player(s), Ennemie(s), or Collectible(s)\n",
+		pexit_failfree("Too few/many Player(s), Exit(s), or Collectible(s)\n",
 			map);
 }
 

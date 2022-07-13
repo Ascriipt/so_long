@@ -58,7 +58,6 @@ void	init_texture(t_gdata *sl)
 
 void	close_game(t_gdata *sl)
 {
-	printf("\n%p\n", sl);
 	free_texturexmap(&(sl->game_t), &(sl->win), &(sl->map));
 	mlx_destroy_window(sl->win.mlx, sl->win.window);
 	mlx_destroy_display(sl->win.mlx);

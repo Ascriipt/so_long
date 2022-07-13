@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 12:28:48 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:07:07 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	event_manager(int keycode, t_gdata *sl)
 {
-	printf("keycode : %d\n", keycode);
-	printf("Before:\n x: %d\n, y: %d\n", sl->map.px, sl->map.py);
+	sl->mv++;
+	ft_putstr_fd("Moves : ", STDERR_FILENO);
+	ft_putnbr_fd(sl->mv, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	if (keycode == 65307)
 		close_game(sl);
 	if (keycode == 119)
@@ -52,7 +54,6 @@ void	my_init(t_gdata *sl)
 	gen_map(sl->map, &(sl->win), sl->game_t);
 	find_player(&(sl->map.px), &(sl->map.py), sl->map.map);
 	count_collectibles(&(sl->map.t_col), sl->map.map);
-	printf("\nnumber of collectibles : %d\n", sl->map.t_col);
 	mlx_hook(sl->win.window, 17, 0L << 2, red_cross, sl);
 	mlx_key_hook(sl->win.window, event_manager, sl);
 	mlx_loop(sl->win.mlx);
@@ -75,6 +76,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (1);
+	so_long.mv = 0;
 	so_long.map.map = parse_map(av[1]);
 	map_main(&(so_long.map));
 	my_init(&so_long);

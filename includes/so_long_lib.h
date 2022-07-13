@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 12:33:36 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:00:41 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_gdata
 	t_coord		map;
 	t_window	win;
 	t_texture	game_t;
+	int			mv;
 }				t_gdata;
 
 void	free_texturexmap(t_texture *game_t, t_window *win, t_coord *map);
@@ -102,6 +103,7 @@ void	move_right(int *px, int *py, char **map, t_gdata *sl);
 
 /*------------utils------------*/
 
+int		ft_sizeof(int n, int ln);
 void	mp_swop(char *x, char *y);
 void	count_collectibles(int *t_col, char **map);
 

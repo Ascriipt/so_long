@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:30:14 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 03:40:49 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 13:04:17 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	move_left(int *px, int *py, char **map, t_gdata *sl)
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
 		sl->game_t.floor, (*px * 64), (*py * 64));
 	mlx_put_image_to_window(sl->win.mlx, sl->win.window,
-		sl->game_t.player_r, ((*px - 1) * 64), (*py * 64));
+		sl->game_t.player_l, ((*px - 1) * 64), (*py * 64));
 	*px -= 1;
 }
 

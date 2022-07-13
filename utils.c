@@ -6,11 +6,24 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:50:38 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 12:56:14 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:40:19 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_lib.h"
+
+void	is_ber(char *filename)
+{
+	int	i;
+	int	ln;
+
+	i = 0;
+	ln = ft_strlen(filename);
+	while (filename[i] && i < ln - 4)
+		i++;
+	if (strncmp(filename + i, ".ber", 4))
+		pexit_failure("file is not a .ber");
+}
 
 int	ft_sizeof(int n, int ln)
 {

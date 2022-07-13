@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:34:52 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 13:26:44 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:39:13 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	main(int ac, char **av)
 		return (1);
 	so_long.mv = 0;
 	so_long.map.c_col = 0;
+	is_ber(av[1]);
 	so_long.map.map = parse_map(av[1]);
 	map_main(&(so_long.map));
 	my_init(&so_long);

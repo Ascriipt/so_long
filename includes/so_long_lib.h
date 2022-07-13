@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:26:48 by maparigi          #+#    #+#             */
-/*   Updated: 2022/07/13 13:00:41 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:38:37 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	move_right(int *px, int *py, char **map, t_gdata *sl);
 
 /*------------utils------------*/
 
+void	is_ber(char *filename);
 int		ft_sizeof(int n, int ln);
 void	mp_swop(char *x, char *y);
 void	count_collectibles(int *t_col, char **map);

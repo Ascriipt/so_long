@@ -6,7 +6,7 @@
 #    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 16:43:51 by maparigi          #+#    #+#              #
-#    Updated: 2022/07/13 12:53:00 by maparigi         ###   ########.fr        #
+#    Updated: 2022/09/03 15:04:49 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ CFLAGS = -Wall -Wextra -Werror -MMD -MP
 FLAGS_MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 .c.o:
-	@${CC} ${CFLAGS} -I${INC} -Imlx_linux -O3 -c $< -o $@
+	@${CC} ${CFLAGS} -I${INC} -Imlx_linux -c $< -o $@
 
 all:	${LIBFT} ${GNL} ${NAME}
 

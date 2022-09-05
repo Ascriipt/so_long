@@ -6,7 +6,7 @@
 #    By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 16:43:51 by maparigi          #+#    #+#              #
-#    Updated: 2022/09/03 15:04:49 by maparigi         ###   ########.fr        #
+#    Updated: 2022/09/05 23:26:08 by maparigi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ GNL = ${GNL_PATH}gnl.a
 
 SRCS =	main.c			\
 		exit.c			\
+		flood.c			\
 		utils.c			\
 		parse.c			\
 		moves.c			\

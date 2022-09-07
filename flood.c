@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 22:59:54 by maparigi          #+#    #+#             */
-/*   Updated: 2022/09/06 01:01:39 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/09/07 22:35:48 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,30 @@ void	dfs(char **map, int i, int j)
 	return ;
 }
 
+int	check_collectibles(char	**map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] == 'C')
+			{
+				if ((map[i + 1][j] == '0' || map[i + 1][j] == '1')
+					&& (map[i - 1][j] == '0' || map[i - 1][j] == '1')
+					&& (map[i][j + 1] == '0' || map[i][j + 1] == '1')
+					&& (map[i][j - 1] == '0' || map[i][j - 1] == '1'))
+					return (-1);
+			}
+		}
+	}
+	return (0);
+}
+
 int	is_path(char **map)
 {
 	int	i;
@@ -77,7 +101,7 @@ void	flood_fill(char **map)
 	find_player(&j, &i, map, 'P');
 	map[i][j] = '0';
 	dfs(map, i, j);
-	if (is_path(map) == -1)
+	if (is_path(map) == -1 || check_collectibles(map) == -1)
 		pexit_failfree("no valid path", map);
 	rev_dfs(map, i, j);
 	map[i][j] = 'P';

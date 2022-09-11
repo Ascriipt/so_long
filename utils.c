@@ -6,7 +6,7 @@
 /*   By: maparigi <maparigi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 02:50:38 by maparigi          #+#    #+#             */
-/*   Updated: 2022/09/11 15:56:13 by maparigi         ###   ########.fr       */
+/*   Updated: 2022/09/11 16:04:55 by maparigi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	mp_swop(char *x, char *y)
 
 	swop = *x;
 	*x = *y;
-	*y = swop; 
+	*y = swop;
 }
 
 void	count_collectibles(int *t_col, char **map)
